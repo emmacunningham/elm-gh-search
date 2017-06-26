@@ -10,15 +10,9 @@ import Navigation exposing (Location)
 import Routing
 
 
--- main : Program String Model Msg
--- main =
---     programWithFlags { view = view, init = init, update = update, subscriptions = subscriptions }
-
-
 initialModel : Route -> Model
 initialModel route =
-    { route = route
-    }
+    initModel
 
 
 init : Location -> ( Model, Cmd Msg )
