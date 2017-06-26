@@ -23,6 +23,16 @@ init path =
     ( initModel, Cmd.none )
 
 
+getCmd : Model -> Route -> Cmd Msg
+getCmd model route =
+    case route of
+        UsersRoute user ->
+            Cmds.fetchUsers model.searchInput
+
+        _ ->
+            Cmd.none
+
+
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
@@ -31,7 +41,7 @@ update msg model =
                 newRoute =
                     parseLocation location
             in
-                ( { model | route = newRoute }, Cmd.none )
+                ( { model | route = newRoute }, getCmd model newRoute )
 
         UpdateSearch input ->
             ( { model | searchInput = input }, Cmd.none )
@@ -43,7 +53,7 @@ update msg model =
             ( { model | userResult = response }, Cmd.none )
 
         GoTo route ->
-            ( { model | route = route }, Routing.goTo route )
+            ( { model | route = route }, Cmd.batch [ Routing.goTo route, getCmd model route ] )
 
 
 
