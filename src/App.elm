@@ -4,6 +4,8 @@ import Html exposing (Html, text, div, img)
 import Routing exposing (parseLocation)
 import Types exposing (Route(..), Model, Msg(..))
 import Pages.Home
+import Pages.Users
+import Pages.Repos
 import RemoteData
 import Commands as Cmds
 
@@ -35,10 +37,13 @@ update msg model =
             ( { model | searchInput = input }, Cmd.none )
 
         SubmitSearch ->
-            ( model, Cmds.fetchUsers model.searchInput )
+            ( model, Cmd.none )
 
         OnFetchUsers response ->
             ( { model | userResult = response }, Cmd.none )
+
+        GoTo route ->
+            ( { model | route = route }, Routing.goTo route )
 
 
 
@@ -49,8 +54,14 @@ update msg model =
 view : Model -> Html Msg
 view model =
     case model.route of
-        _ ->
-            Pages.Home.view
+        HomeRoute ->
+            Pages.Home.view model
+
+        UsersRoute _ ->
+            Pages.Users.view model
+
+        ReposRoute _ ->
+            Pages.Repos.view model
 
 
 subscriptions : Model -> Sub Msg

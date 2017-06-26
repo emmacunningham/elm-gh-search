@@ -6,7 +6,7 @@ import RemoteData exposing (WebData)
 
 type Route
     = HomeRoute
-    | SearchRoute String
+    | UsersRoute String
     | ReposRoute String
 
 
@@ -37,3 +37,4 @@ type Msg
     | UpdateSearch String
     | SubmitSearch
     | OnFetchUsers (WebData UserResult)
+    | GoTo Route

@@ -2,13 +2,13 @@ module Pages.Home exposing (..)
 
 import Html exposing (Html, div, text, input)
 import Html.Events as Events
-import Types exposing (Msg(..))
+import Types exposing (Msg(..), Model, Route(..))
 
 
-view : Html Msg
-view =
+view : Model -> Html Msg
+view model =
     div []
         [ text "search for users"
         , input [ Events.onInput UpdateSearch ] []
-        , div [ Events.onClick SubmitSearch ] [ text "click" ]
+        , div [ Events.onClick (GoTo (UsersRoute model.searchInput)) ] [ text "click" ]
         ]

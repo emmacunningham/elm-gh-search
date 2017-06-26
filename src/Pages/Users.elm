@@ -1,4 +1,4 @@
-module Pages.Repos exposing (..)
+module Pages.Users exposing (..)
 
 import Html exposing (Html, div, text, input)
 import Html.Events as Events
@@ -9,6 +9,4 @@ view : Model -> Html Msg
 view model =
     div []
         [ text "search for users"
-        , input [ Events.onInput UpdateSearch ] []
-        , div [ Events.onClick SubmitSearch ] [ text "click" ]
         ]
