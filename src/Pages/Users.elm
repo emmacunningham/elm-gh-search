@@ -1,12 +1,28 @@
 module Pages.Users exposing (..)
 
-import Html exposing (Html, div, text, input)
+import Html exposing (Html, div, text, input, img)
 import Html.Events as Events
-import Types exposing (Msg(..), Model)
+import Html.Attributes as Attributes
+import Types exposing (Msg(..), Model, UserResult, User)
+import RemoteData exposing (WebData)
+
+
+viewUser : User -> Html Msg
+viewUser user =
+    div [] [ img [ Attributes.src user.avatar_url ] [] ]
+
+
+viewUserResult : UserResult -> List (Html Msg)
+viewUserResult result =
+    List.map viewUser (List.take 5 result.items)
 
 
 view : Model -> Html Msg
 view model =
-    div []
-        [ text "search for users"
-        ]
+    case model.userResult of
+        RemoteData.Success result ->
+            div []
+                (viewUserResult result)
+
+        _ ->
+            div [] [ text "something else happened" ]
