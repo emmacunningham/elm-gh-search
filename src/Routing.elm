@@ -16,7 +16,7 @@ matchers =
 
 parseLocation : Location -> Route
 parseLocation location =
-    case (parseHash matchers location) of
+    case (parsePath matchers location) of
         Just route ->
             route
 
@@ -31,7 +31,7 @@ goTo route =
             Navigation.newUrl "/"
 
         UsersRoute searchTerm ->
-            Navigation.newUrl ("/users/" ++ searchTerm)
+            Navigation.newUrl ("users/" ++ searchTerm)
 
         ReposRoute username ->
-            Navigation.newUrl ("/repos/" ++ username)
+            Navigation.newUrl ("repos/" ++ username)

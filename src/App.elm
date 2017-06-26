@@ -63,7 +63,7 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-    case model.route of
+    case (Debug.log "route" model.route) of
         HomeRoute ->
             Pages.Home.view model
 
