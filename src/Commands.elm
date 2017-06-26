@@ -32,8 +32,8 @@ decodeRepo =
         |> Json.Decode.Pipeline.required "id" (Json.Decode.int)
         |> Json.Decode.Pipeline.required "name" (Json.Decode.string)
         |> Json.Decode.Pipeline.required "html_url" (Json.Decode.string)
-        |> Json.Decode.Pipeline.required "description" (Json.Decode.string)
-        |> Json.Decode.Pipeline.required "language" (Json.Decode.string)
+        |> Json.Decode.Pipeline.optional "description" (Json.Decode.string) ""
+        |> Json.Decode.Pipeline.optional "language" (Json.Decode.string) ""
 
 
 decodeRepoResult : Json.Decode.Decoder RepoResult

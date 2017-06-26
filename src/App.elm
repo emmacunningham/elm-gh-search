@@ -58,11 +58,6 @@ update msg model =
             ( { model | route = route }, Routing.goTo route )
 
 
-
--- _ ->
---     ( model, Cmd.none )
-
-
 view : Model -> Html Msg
 view model =
     case model.route of

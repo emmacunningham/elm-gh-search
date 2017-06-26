@@ -36,7 +36,8 @@ type alias User =
 
 type alias RepoResult =
     { total_count : Int
-    , incomplete_results : Bool
+    , incomplete_results :
+        Bool
     , items : List Repo
     }
 
