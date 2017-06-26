@@ -12,7 +12,7 @@ import Routing
 
 initialModel : Route -> Model
 initialModel route =
-    initModel
+    { initModel | route = route }
 
 
 init : Location -> ( Model, Cmd Msg )

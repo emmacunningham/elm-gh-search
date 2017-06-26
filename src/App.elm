@@ -53,7 +53,7 @@ update msg model =
             ( { model | userResult = response }, Cmd.none )
 
         GoTo route ->
-            ( { model | route = route }, Cmd.batch [ Routing.goTo route, getCmd model route ] )
+            ( { model | route = route }, Routing.goTo route )
 
 
 
