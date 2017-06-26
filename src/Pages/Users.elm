@@ -24,5 +24,8 @@ view model =
             div []
                 (viewUserResult result)
 
+        RemoteData.Loading ->
+            div [] [ text "Loading" ]
+
         _ ->
             div [] [ text "something else happened" ]

@@ -5,14 +5,19 @@ import App exposing (..)
 
 -- import Html exposing (programWithFlags)
 
-import Types exposing (Msg(..), Model, Route)
+import Types exposing (Msg(..), Model, Route(..))
 import Navigation exposing (Location)
 import Routing
 
 
 initialModel : Route -> Model
 initialModel route =
-    { initModel | route = route }
+    case route of
+        UsersRoute userName ->
+            { initModel | route = route, searchInput = userName }
+
+        _ ->
+            { initModel | route = route }
 
 
 init : Location -> ( Model, Cmd Msg )
@@ -20,8 +25,11 @@ init location =
     let
         currentRoute =
             Routing.parseLocation location
+
+        currentModel =
+            initialModel currentRoute
     in
-        ( initialModel currentRoute, Cmd.none )
+        ( currentModel, getCmd currentModel currentRoute )
 
 
 main : Program Never Model Msg

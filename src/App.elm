@@ -18,11 +18,6 @@ initModel =
     }
 
 
-init : String -> ( Model, Cmd Msg )
-init path =
-    ( initModel, Cmd.none )
-
-
 getCmd : Model -> Route -> Cmd Msg
 getCmd model route =
     case route of
