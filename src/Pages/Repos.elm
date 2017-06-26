@@ -8,7 +8,5 @@ import Types exposing (Msg(..), Model)
 view : Model -> Html Msg
 view model =
     div []
-        [ text "search for users"
-        , input [ Events.onInput UpdateSearch ] []
-        , div [ Events.onClick SubmitSearch ] [ text "click" ]
+        [ text "repos"
         ]

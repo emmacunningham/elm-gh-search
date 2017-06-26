@@ -3,13 +3,13 @@ module Pages.Users exposing (..)
 import Html exposing (Html, div, text, input, img)
 import Html.Events as Events
 import Html.Attributes as Attributes
-import Types exposing (Msg(..), Model, UserResult, User)
+import Types exposing (Msg(..), Model, UserResult, User, Route(..))
 import RemoteData exposing (WebData)
 
 
 viewUser : User -> Html Msg
 viewUser user =
-    div [] [ img [ Attributes.src user.avatar_url ] [] ]
+    div [] [ img [ Attributes.src user.avatar_url, Events.onClick (GoTo (ReposRoute user.login)) ] [] ]
 
 
 viewUserResult : UserResult -> List (Html Msg)

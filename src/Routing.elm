@@ -31,7 +31,7 @@ goTo route =
             Navigation.newUrl "/"
 
         UsersRoute searchTerm ->
-            Navigation.newUrl ("users/" ++ searchTerm)
+            Navigation.newUrl ("/users/" ++ searchTerm)
 
         ReposRoute username ->
-            Navigation.newUrl ("repos/" ++ username)
+            Navigation.newUrl ("/repos/" ++ username)

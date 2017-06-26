@@ -14,6 +14,7 @@ type alias Model =
     { route : Route
     , searchInput : String
     , userResult : WebData UserResult
+    , repoResult : WebData RepoResult
     }
 
 
@@ -29,6 +30,23 @@ type alias User =
     , avatar_url : String
     , url : String
     , html_url : String
+    , login : String
+    }
+
+
+type alias RepoResult =
+    { total_count : Int
+    , incomplete_results : Bool
+    , items : List Repo
+    }
+
+
+type alias Repo =
+    { id : Int
+    , name : String
+    , html_url : String
+    , description : String
+    , language : String
     }
 
 
@@ -37,4 +55,5 @@ type Msg
     | UpdateSearch String
     | SubmitSearch
     | OnFetchUsers (WebData UserResult)
+    | OnFetchRepos (WebData RepoResult)
     | GoTo Route

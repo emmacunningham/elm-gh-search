@@ -15,6 +15,7 @@ initModel =
     { route = HomeRoute
     , searchInput = ""
     , userResult = RemoteData.Loading
+    , repoResult = RemoteData.Loading
     }
 
 
@@ -22,7 +23,10 @@ getCmd : Model -> Route -> Cmd Msg
 getCmd model route =
     case route of
         UsersRoute user ->
-            Cmds.fetchUsers model.searchInput
+            Cmds.fetchUsers user
+
+        ReposRoute user ->
+            Cmds.fetchRepos user
 
         _ ->
             Cmd.none
@@ -46,6 +50,9 @@ update msg model =
 
         OnFetchUsers response ->
             ( { model | userResult = response }, Cmd.none )
+
+        OnFetchRepos response ->
+            ( { model | repoResult = response }, Cmd.none )
 
         GoTo route ->
             ( { model | route = route }, Routing.goTo route )
