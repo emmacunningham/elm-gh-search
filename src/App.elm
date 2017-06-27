@@ -1,6 +1,7 @@
 module App exposing (..)
 
 import Html exposing (Html, text, div, img)
+import Html.Attributes exposing (class)
 import Routing exposing (parseLocation)
 import Types exposing (Route(..), Model, Msg(..))
 import Pages.Home
@@ -16,6 +17,7 @@ initModel =
     , searchInput = ""
     , userResult = RemoteData.Loading
     , repoResult = RemoteData.Loading
+    , curUser = ""
     }
 
 
@@ -60,15 +62,19 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-    case model.route of
-        HomeRoute ->
-            Pages.Home.view model
+    let
+        pageView =
+            case model.route of
+                HomeRoute ->
+                    Pages.Home.view model
 
-        UsersRoute _ ->
-            Pages.Users.view model
+                UsersRoute _ ->
+                    Pages.Users.view model
 
-        ReposRoute _ ->
-            Pages.Repos.view model
+                ReposRoute _ ->
+                    Pages.Repos.view model
+    in
+        div [ class "container" ] [ pageView ]
 
 
 subscriptions : Model -> Sub Msg

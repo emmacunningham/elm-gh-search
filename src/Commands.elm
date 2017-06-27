@@ -34,6 +34,7 @@ decodeRepo =
         |> Json.Decode.Pipeline.required "html_url" (Json.Decode.string)
         |> Json.Decode.Pipeline.optional "description" (Json.Decode.string) ""
         |> Json.Decode.Pipeline.optional "language" (Json.Decode.string) ""
+        |> Json.Decode.Pipeline.optional "watchers" (Json.Decode.int) 0
 
 
 decodeRepoResult : Json.Decode.Decoder RepoResult

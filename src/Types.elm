@@ -15,6 +15,7 @@ type alias Model =
     , searchInput : String
     , userResult : WebData UserResult
     , repoResult : WebData RepoResult
+    , curUser : String
     }
 
 
@@ -48,6 +49,7 @@ type alias Repo =
     , html_url : String
     , description : String
     , language : String
+    , watchers : Int
     }
 
 
