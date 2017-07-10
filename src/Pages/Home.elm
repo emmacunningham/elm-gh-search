@@ -4,6 +4,7 @@ import Html exposing (Html, div, text, input)
 import Html.Events as Events
 import Types exposing (Msg(..), Model, Route(..))
 import Html.Attributes exposing (class, placeholder)
+import Ui
 
 
 view : Model -> Html Msg
